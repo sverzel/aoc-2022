@@ -9,10 +9,7 @@ my @values;
 {
     local $/;
     open my $fh, "<$input" or die $!;
-    foreach (split "\n", <$fh>) {
-	s/ //;
-	push @values, $_;
-    }
+    push @values, join '', /(\S)\s(\S)/ foreach (split "\n", <$fh>);
 }
 
 sub sum {
@@ -23,6 +20,5 @@ sub sum {
 	return $s;
 }
 
-print "Score: ", sum({AX => 4, AY => 8, AZ => 3, BX => 1, BY => 5, BZ => 9, CX => 7, CY => 2, CZ => 6}), "\n";
-
-print "Score: ", sum({AX => 3, AY => 4, AZ => 8, BX => 1, BY => 5, BZ => 9, CX => 2, CY => 6, CZ => 7}), "\n";
+print "Score part1: ", sum({AX => 4, AY => 8, AZ => 3, BX => 1, BY => 5, BZ => 9, CX => 7, CY => 2, CZ => 6}), "\n";
+print "Score part2: ", sum({AX => 3, AY => 4, AZ => 8, BX => 1, BY => 5, BZ => 9, CX => 2, CY => 6, CZ => 7}), "\n";
