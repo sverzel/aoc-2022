@@ -9,7 +9,7 @@ my @values;
 {
     local $/;
     open my $fh, "<$input" or die $!;
-    push @values, join '', /(\S)\s(\S)/ foreach (split "\n", <$fh>);
+    push @values, join '', /(\w) (\w)/ foreach (split "\n", <$fh>);
 }
 
 sub sum {
