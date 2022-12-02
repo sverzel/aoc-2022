@@ -9,16 +9,16 @@ my @values;
 {
     local $/;
     open my $fh, "<$input" or die $!;
-    @values = split "\n", <$fh>;
+    foreach (split "\n", <$fh>) {
+	s/ //;
+	push @values, $_;
+    }
 }
 
 sub sum {
 	my $r = shift;
 	my $s = 0;
-	foreach (@values) {
-		chomp; s/ //;
-		$s += $r->{ $_ };
-	}
+	$s += $r->{ $_ } foreach @values;
 	
 	return $s;
 }
