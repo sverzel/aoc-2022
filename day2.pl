@@ -10,7 +10,7 @@ my @values;
 {
     local $/;
     open my $fh, "<$input" or die $!;
-    push @values, join '', /(\w) (\w)/ foreach (split "\n", <$fh>);
+    push @values, join '', /(\w) (\w)/ foreach split "\n", <$fh>;
 }
 
 print "Score part1: ", sum(map {AX => 4, AY => 8, AZ => 3, BX => 1, BY => 5, BZ => 9, CX => 7, CY => 2, CZ => 6}->{$_}, @values), "\n";
