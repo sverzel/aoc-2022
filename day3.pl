@@ -23,5 +23,4 @@ sub intersect {
 print "Sum of priorities: ", sum(map $p{ (intersect([(@$_)[0..@$_/2-1]], [(@$_)[@$_/2..@$_-1]]))[0] }, @values), "\n";
 
 my $s = 0; $s += $p{ (intersect([intersect(pop @values, pop @values)], pop @values))[0] } while @values;
-
 print "Badge priorities: $s\n";
