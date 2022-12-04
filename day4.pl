@@ -14,5 +14,4 @@ my @values;
 }
 
 print "Number of fully covering pairs: ", sum(map $_->[0][0] <= $_->[1][0] && $_->[0][1] >= $_->[1][1] || $_->[1][0] <= $_->[0][0] && $_->[1][1] >= $_->[0][1] ? 1 : 0, @values), "\n";
-
 print "Number of partly covering pairs: ", sum(map {my %h; map $h{$_} = 1, $_->[0][0]..$_->[0][1]; scalar(grep $h{$_}, $_->[1][0]..$_->[1][1])>0 ? 1 : 0} @values), "\n";
