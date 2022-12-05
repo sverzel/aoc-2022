@@ -18,8 +18,7 @@ while (my $line = shift @values) {
     my @a = $line =~ /[\[ ](.)[\] ]\s?/g;
     for (my $i = 0; $i < @a; $i++) {
 	next if $a[$i] eq ' ';
-	unshift @{$s1[$i]}, $a[$i];
-	unshift @{$s2[$i]}, $a[$i];
+	unshift @{$_}, $a[$i] foreach $s1[$i], $s2[$i];
     }
 }
 
