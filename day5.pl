@@ -12,18 +12,17 @@ my @values;
     push @values, split "\n", <$fh>;
 }
 
-my @s1;
+my (@s1, @s2);
 while (my $line = shift @values) {
     shift @values, last if $line =~ /^[\s\d]+$/;
     my @a = $line =~ /[\[ ](.)[\] ]\s?/g;
     for (my $i = 0; $i < @a; $i++) {
 	next if $a[$i] eq ' ';
 	unshift @{$s1[$i]}, $a[$i];
+	unshift @{$s2[$i]}, $a[$i];
     }
 }
 
-my @s2;
-push @s2, map [@$_], @s1;
 foreach my $instr(@values) {
     my ($n, $f, $t) = $instr =~ /^move (\d+) from (\d+) to (\d+)$/;
     push @{$s1[$t-1]}, pop @{$s1[$f-1]} for 1 .. $n;
