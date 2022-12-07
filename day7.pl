@@ -27,7 +27,7 @@ while (my $line = shift @values) {
 		($c) = $c =~ m{^(.*)/[^/]+$};
 	    }
 	    else {
-		$c .= ($c eq '/' ? '' : '/') . "$arg";
+		$c .= ($c eq '/' ? '' : '/') . $arg;
 	    }
 	}
     }
@@ -47,8 +47,6 @@ foreach my $path(sort { ($b =~ tr[/][]) <=> ($a =~ tr[/][]) || length($b) <=> le
 print "Sum of <= 100k directories: ", sum(map $fs{$_}, grep $fs{$_} <= 100000 ? $fs{$_} : 0, keys %fs), "\n";
 
 my $r = 30000000 - (70000000 - $fs{'/'});
-print "Used space: $fs{'/'}\n";
-print "Space to save: $r\n";
 
 foreach my $path(sort {$fs{$a} <=> $fs{$b}} keys %fs) {
     if ($fs{$path} >= $r) {
