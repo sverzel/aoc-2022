@@ -46,10 +46,8 @@ foreach my $path(sort { ($b =~ tr[/][]) <=> ($a =~ tr[/][]) || length($b) <=> le
 
 print "Sum of <= 100k directories: ", sum(map $fs{$_}, grep $fs{$_} <= 100000 ? $fs{$_} : 0, keys %fs), "\n";
 
-my $r = 30000000 - (70000000 - $fs{'/'});
-
 foreach my $path(sort {$fs{$a} <=> $fs{$b}} keys %fs) {
-    if ($fs{$path} >= $r) {
+    if ($fs{$path} >= 30000000 - (70000000 - $fs{'/'})) {
 	print "Found path '$path' of size $fs{$path}\n";
 	exit;
     }
