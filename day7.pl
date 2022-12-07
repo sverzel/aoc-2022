@@ -23,7 +23,6 @@ while (my $line = shift @values) {
 		$c = $arg;
 	    }
 	    elsif ($arg eq '..') {
-		my $k = $c;
 		($c) = $c =~ m{^(.*)/[^/]+$};
 	    }
 	    else {
@@ -36,6 +35,7 @@ while (my $line = shift @values) {
     }
 }
 
+# best of luck to you to understand the following :-D
 foreach my $path(sort { ($b =~ tr[/][]) <=> ($a =~ tr[/][]) || length($b) <=> length($a) } keys %fs) {
     if ($path =~ m{^/.+}) {
 	my ($x) = $path =~ m{^(.*)/[^/]+$};
