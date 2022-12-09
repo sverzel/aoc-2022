@@ -1,7 +1,6 @@
 #!/usr/bin/perl -w
 
 use strict;
-use Data::Dumper qw/Dumper/;
 
 my $g;
 {
@@ -10,8 +9,7 @@ my $g;
     push @{$g}, map [split //], split "\n", <$fh>;
 }
 
-my $nv = 0;
-my $mvd = 0;
+my ($nv, $mvd) = (0, 0);
 for (my $i = 1; $i < @{$g->[0]}-1; $i++) {
     for (my $x = 1; $x < @{$g->[$i]}; $x++) {
 	$nv++ if scalar(grep $_ >= $g->[$i][$x], @{$g->[$i]}[0..$x-1])>0
