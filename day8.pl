@@ -27,3 +27,4 @@ for (my $i = 1; $i < @{$g->[0]}-1; $i++) {
 
 print "Visible trees: ", @$g*@{$g->[0]}-$nv, "\n";
 print "Maximum viewing distance: $mvd\n";
+print "Trying out a rebase\n";
